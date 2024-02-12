@@ -76,9 +76,9 @@ int main() {
             } while (!validateIntInput(Studentas[i].egzaminas));
 
             if (nd_kiekis % 2 == 0 && nd_kiekis > 0) {
-                mediana[i] = (Studentas[i].namu_darbai[nd_kiekis / 2] + Studentas[i].namu_darbai[nd_kiekis / 2 - 1]) / 2.0;
+                mediana[i] = (Studentas[i].namu_darbai[nd_kiekis / 2] + Studentas[i].namu_darbai[nd_kiekis / 2 - 1])/2.0*0.4 + 0.6*Studentas[i].egzaminas;
             } else {
-                mediana[i] = Studentas[i].namu_darbai[nd_kiekis / 2];
+                mediana[i] = Studentas[i].namu_darbai[nd_kiekis / 2]*0.4 + 0.6*Studentas[i].egzaminas;
             }
 
             galutinis_balas[i] = 0.4 * rezultatas / nd_kiekis + 0.6 * Studentas[i].egzaminas;
