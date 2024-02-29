@@ -16,8 +16,8 @@ struct Studentai {
     wstring pavarde;
     int* namu_darbai;
     int egzaminas;
-    double mediana;
-    double vidurkis;
+    double mediana = 0.0;
+    double vidurkis = 0.0;
 };
 
 double Vidurkis(int nd_kiekis, int nd_suma, int egzaminas) {
@@ -43,12 +43,21 @@ int main() {
     int programos_veikimas;
     wstring Vardai[] = { L"Tomas", L"Matas", L"Kasparas", L"Algirdas", L"Mantas", L"Adomas", L"Simona", L"Gerda", L"Jurgita", L"Rūta", L"Lukas", L"Edvardas", L"Ernestas", L"Rimas" };
     wstring Pavardes[] = { L"Petronis", L"Semėnas", L"Cesevičiūtė", L"Poškus", L"Šumskis", L"Leonardas", L"Petronytė", L"Šerelis", L"Kubilius", L"Katleris", L"Stonkus", L"Sabonis" };
-    Studentai* Studentas = new Studentai[moksk + 1];
+    Studentai* Studentas = nullptr;
 
     srand(time(nullptr));
 
-    do
-    {
+    do {
+        // cia vyksta dinamiskumas
+        Studentai* temp = new Studentai[moksk + 1];
+        for (int i = 0; i < moksk; ++i) {
+            temp[i] = Studentas[i];
+        }
+        delete[] Studentas;
+        Studentas = temp;
+
+        Studentas[moksk].namu_darbai = nullptr;
+
         int nd_kiekis = 0;
         int rezultatas = 0;
         while (true) {
@@ -69,21 +78,38 @@ int main() {
         if (programos_veikimas == 4)
             break;
 
-        if (moksk > 0) {
-            Studentai* temp = new Studentai[moksk + 1];
+        if (programos_veikimas == 3) {
+            int a;
+            int nd = 5;
+            int nd_rez = 0;
+            wcout << L"Kiek studentų sugeneruoti?: " << endl; 
+            cin >> a;
+            
+            // dinamiskumas vel
+            Studentai* temp = new Studentai[moksk + a];
             for (int i = 0; i < moksk; ++i) {
                 temp[i] = Studentas[i];
             }
             delete[] Studentas;
             Studentas = temp;
+            
+            for(int i = moksk; i < moksk + a; i++){
+                nd_rez = 0;
+                Studentas[i].namu_darbai = new int[nd];
+                Studentas[i].vardas = Vardai[rand() % 14];
+                Studentas[i].pavarde = Pavardes[rand() % 12];
+                for(int j = 0; j < nd; j++){
+                    Studentas[i].namu_darbai[j] = rand()%10+1;
+                    nd_rez += Studentas[i].namu_darbai[j];
+                }
+                Studentas[i].egzaminas = rand()%10+1;
+                Studentas[i].mediana = medianosSkaiciavimas(Studentas[i].namu_darbai, nd, Studentas[i].egzaminas);
+                Studentas[i].vidurkis = Vidurkis(nd, nd_rez, Studentas[i].egzaminas);
+            }
+            moksk += a;
+            break;
         }
 
-        if (programos_veikimas == 3) {
-            Studentas[moksk].vardas = Vardai[rand() % 14];
-            Studentas[moksk].pavarde = Pavardes[rand() % 12];
-            wcout << moksk + 1 << " Studento vardas: " << Studentas[moksk].vardas << endl;
-            wcout << moksk + 1 << " Studento pavarde: " << Studentas[moksk].pavarde << endl;
-        }
         else {
             wcout << L"Įveskitę " << moksk + 1 << L" studento vardą: ";
             wcin >> Studentas[moksk].vardas;
@@ -91,7 +117,7 @@ int main() {
             wcin >> Studentas[moksk].pavarde;
         }
 
-        if (programos_veikimas == 2 || programos_veikimas == 3) {
+        if (programos_veikimas == 2) {
             Studentas[moksk].namu_darbai = new int[N];
             while (nd_kiekis <= N - 1) {
                 Studentas[moksk].namu_darbai[nd_kiekis] = rand() % 10 + 1;
@@ -125,6 +151,9 @@ int main() {
                         char choice3;
                         cin >> choice3;
                         if (toupper(choice3) != 'Y') break;
+                        if (cin.peek() != '\n') {
+                        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+}
                     }
                 }
                 else
@@ -137,11 +166,11 @@ int main() {
             Studentas[moksk].namu_darbai = nullptr;
         }
 
-        if (programos_veikimas == 2 || programos_veikimas == 3) {
+        if (programos_veikimas == 2) {
             Studentas[moksk].egzaminas = rand() % 10 + 1;
             wcout << moksk + 1 << L" Studento egzamino balas: " << Studentas[moksk].egzaminas << endl;
         }
-        else {
+        else if(programos_veikimas == 1) {
             while (true) {
                 wcout << L"Įveskitę " << moksk + 1 << L" studento egzamino rezultatą (1-10): ";
                 cin >> Studentas[moksk].egzaminas;
@@ -169,6 +198,9 @@ int main() {
         char choice2;
         cin >> choice2;
         if (toupper(choice2) != 'Y') break;
+        if (cin.peek() != '\n') {
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+}
     } while (true);
 
     while (moksk > 0) {
@@ -201,11 +233,11 @@ int main() {
         }
     }
 
-    // Trynimas
     for (int i = 0; i < moksk; ++i) {
         delete[] Studentas[i].namu_darbai;
     }
     delete[] Studentas;
+
     system("pause");
     return 0;
 }
