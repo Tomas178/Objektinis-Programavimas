@@ -41,12 +41,15 @@ int main() {
     }
     } catch (const invalid_argument& e) {
         cerr << "Klaida: " << e.what() << endl;
+        continue;
     } catch (const out_of_range& e) {
         cerr << "Klaida: " << e.what() << endl;
+        continue;
     } catch (const exception& e) {
         cerr << "Klaida: " << e.what() << endl;
         cin.clear();
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        continue;
     }
 
         Studentokai Studentas;
@@ -77,13 +80,18 @@ int main() {
                 istringstream iss(line);
 
                 if (!(iss >> Studentas.vardas >> Studentas.pavarde)) {
-                    cerr << "Failed to read vardas and pavarde." << endl;
+                    cerr << "Nepavyko nuskaityti vardo ir pavardes" << endl;
                 }
 
                 int pazymys;
                 Studentas.namu_darbai.clear();
-                while (iss >> pazymys) {
+                try{
+                    while (iss >> pazymys) {
                     Studentas.namu_darbai.push_back(pazymys);
+                    }
+                } catch(const exception &e) {
+                    cerr << "Nepavyko nuskaityti egzamino balo " << Studentai.size() << " eiluteje:(" << endl;
+                    exit(1);
                 }
 
                 if (!Studentas.namu_darbai.empty()) {
@@ -106,6 +114,7 @@ int main() {
             cout << "Vektoriaus size: " << Studentai.size() << endl;
             } catch(const exception& e){
                 cerr << "Klaida: " << e.what() << endl;
+                continue;
             }
         }
 
