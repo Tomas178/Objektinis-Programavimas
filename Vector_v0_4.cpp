@@ -56,7 +56,6 @@ int main() {
 
             vector<Studentokai> Kieti;
             vector<Studentokai> Lievi;
-            int nd_kiekis;
             
             try{
             cout << "Cia jusu failai: " << endl;
@@ -104,10 +103,6 @@ int main() {
                     Studentas.vidurkis = Vidurkis(Studentas.namu_darbai.size(), accumulate(Studentas.namu_darbai.begin(), Studentas.namu_darbai.end(), 0), Studentas.egzaminas);
                 }
 
-                if(Studentas.vidurkis < 5.0) Lievi.push_back(Studentas);
-                else Kieti.push_back(Studentas);
-
-                nd_kiekis = Studentas.namu_darbai.size();
                 Studentai.push_back(Studentas);
             }
 
@@ -138,10 +133,27 @@ int main() {
                 continue;
             }
 
+            if(noras == 1) {
+                sort(Studentai.begin(), Studentai.end(), palygintiPagalVidurki);
+                for(auto stud : Studentai){
+                    if(stud.vidurkis < 5.0) Lievi.push_back(stud);
+                    else Kieti.push_back(stud);
+                }
+            }
+            else if (noras == 2) {
+                sort(Studentai.begin(), Studentai.end(), palygintiPagalMediana);
+                for(auto stud : Studentai){
+                    if(stud.mediana < 5.0) Lievi.push_back(stud);
+                    else Kieti.push_back(stud);
+                }
+            }
 
             cout << "kietu studentu vektoriaus dydis = " << Kieti.size() << endl;
             cout << "Lievu studentu vektoriaus dydis = " << Lievi.size() << endl;
             cout << "kIETU IR LIEVU SUDNETU VEKTORIAUS BENDRAS DYDIS = " << Kieti.size() + Lievi.size() << endl;
+
+            IsvestiRezultatus("Kieti", Kieti, 2);
+            IsvestiRezultatus("Lievi", Lievi, 2);
 
             cout << "Vektoriaus capacity: " << Studentai.capacity() << endl;
             cout << "Vektoriaus size: " << Studentai.size() << endl;
@@ -313,7 +325,7 @@ int main() {
     }
 
     if(Studentai.size() > 0){
-        IsvestiRezultatus(Studentai, norima_isvedimo_vieta);
+        IsvestiRezultatus("Studenciokai", Studentai, norima_isvedimo_vieta);
     }
     
     system("pause");
@@ -321,6 +333,6 @@ int main() {
 
     } catch(const exception& e) {
         cerr << "An exception occurred: " << e.what() << endl;
-        return 1; // Exit with error status
+        return 1;
     }
 }

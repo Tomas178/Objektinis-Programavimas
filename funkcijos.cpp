@@ -64,7 +64,7 @@ void GeneruotiFaila(int kiekis, int nd_kiekis){
     }  
 }
 
-void IsvestiRezultatus(const vector<Studentokai>& Studentai, int norima_isvedimo_vieta) {
+void IsvestiRezultatus(string pavadinimas, const vector<Studentokai>& Studentai, int norima_isvedimo_vieta) {
 
         size_t IlgiausiasVardas = 0;
         size_t IlgiausiaPavarde = 0;
@@ -84,7 +84,8 @@ void IsvestiRezultatus(const vector<Studentokai>& Studentai, int norima_isvedimo
                     << fixed << setprecision(2) << studentas.vidurkis << setw(20) << fixed << setprecision(2) << studentas.mediana << endl;
             }
         } else if (norima_isvedimo_vieta == 2) {
-            ofstream RF("studenciokai.txt");
+            string FailoPavadinimas = pavadinimas + ".txt";
+            ofstream RF(FailoPavadinimas);
             RF << left << setw(IlgiausiasVardas + 5) << "Vardas" << setw(IlgiausiaPavarde + 5) << "Pavarde" << setw(20) << "Galutinis (Vid.)" << setw(20)
                 << "Galutinis(Med.)" << endl;
             RF << "----------------------------------------------------------------------" << endl;
@@ -93,7 +94,7 @@ void IsvestiRezultatus(const vector<Studentokai>& Studentai, int norima_isvedimo
                     << fixed << setprecision(2) << studentas.vidurkis << setw(20) << fixed << setprecision(2) << studentas.mediana << endl;
             }
             RF.close();
-            cout << "Rezultatai isvesti studenciokai.txt faile." << endl;
+            cout << "Rezultatai isvesti " << FailoPavadinimas <<" faile." << endl;
         }
     }
 }
