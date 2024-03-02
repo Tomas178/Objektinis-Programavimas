@@ -43,5 +43,6 @@ bool palygintiPagalPavarde(const Studentokai &a, const Studentokai &b);
 bool palygintiPagalVidurki(const Studentokai &a, const Studentokai &b);
 bool palygintiPagalMediana(const Studentokai &a, const Studentokai &b);
 void GeneruotiFaila(int kiekis, int nd_kiekis);
+void IsvestiRezultatus(const vector<Studentokai>& Studentai, int norima_isvedimo_vieta);
 
 #endif

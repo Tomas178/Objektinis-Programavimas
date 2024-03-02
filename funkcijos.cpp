@@ -41,8 +41,6 @@ void GeneruotiFaila(int kiekis, int nd_kiekis){
             throw runtime_error("Nepavyko atidaryti failo: " + FailoPavadinimas);
         }
 
-        auto start = chrono::high_resolution_clock::now();
-
         RF << left << setw(20) << "Vardas" << setw(20) << "Pavarde";
         for(int i = 1; i <= nd_kiekis; i++){
             RF << setw(7) << "ND" + to_string(i);
@@ -57,15 +55,45 @@ void GeneruotiFaila(int kiekis, int nd_kiekis){
             RF << "\n";
         }
 
-        auto end = chrono::high_resolution_clock::now();
-        auto duration = chrono::duration_cast<chrono::milliseconds>(end - start).count();
-
         RF.close();
         cout << "Failas: " << FailoPavadinimas << " sugeneruotas sekmingai:)" << endl;
-        cout << "Failas sugeneruotas per: " << duration/1000.0 << " sekundes" << endl;
     }
     catch(const exception &e)
     {
         cerr << e.what() << '\n';
     }  
+}
+
+void IsvestiRezultatus(const vector<Studentokai>& Studentai, int norima_isvedimo_vieta) {
+
+        size_t IlgiausiasVardas = 0;
+        size_t IlgiausiaPavarde = 0;
+        for (const auto& student : Studentai) {
+            IlgiausiasVardas = max(IlgiausiasVardas, student.vardas.length());
+            IlgiausiaPavarde = max(IlgiausiaPavarde, student.pavarde.length());
+    }
+
+    if (Studentai.size() > 0) {
+        if (norima_isvedimo_vieta == 1) {
+            cout << left << setw(IlgiausiasVardas + 5) << "Vardas" << setw(IlgiausiaPavarde + 5) << "Pavarde" << setw(20) << "Galutinis (Vid.)" << setw(20)
+                << "Galutinis (Med.)" << endl;
+            cout << "--------------------------------------------------------------------" << endl;
+
+            for (const auto& studentas : Studentai) {
+                cout << left << setw(IlgiausiasVardas + 5) << studentas.vardas << setw(IlgiausiaPavarde + 5) << studentas.pavarde << setw(20)
+                    << fixed << setprecision(2) << studentas.vidurkis << setw(20) << fixed << setprecision(2) << studentas.mediana << endl;
+            }
+        } else if (norima_isvedimo_vieta == 2) {
+            ofstream RF("studenciokai.txt");
+            RF << left << setw(IlgiausiasVardas + 5) << "Vardas" << setw(IlgiausiaPavarde + 5) << "Pavarde" << setw(20) << "Galutinis (Vid.)" << setw(20)
+                << "Galutinis(Med.)" << endl;
+            RF << "----------------------------------------------------------------------" << endl;
+            for (const auto& studentas : Studentai) {
+                RF << left << setw(IlgiausiasVardas + 5) << studentas.vardas << setw(IlgiausiaPavarde + 5) << studentas.pavarde << setw(20)
+                    << fixed << setprecision(2) << studentas.vidurkis << setw(20) << fixed << setprecision(2) << studentas.mediana << endl;
+            }
+            RF.close();
+            cout << "Rezultatai isvesti studenciokai.txt faile." << endl;
+        }
+    }
 }
