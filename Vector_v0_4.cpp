@@ -1,13 +1,5 @@
 #include "funkcijos.h"
-#include <iostream>
-#include <iomanip>
-#include <algorithm>
-#include <limits>
-#include <vector>
-#include <numeric>
-#include <random>
-#include <ctime>
-#include <fstream>
+
 
 const int N = 10;
 
@@ -27,17 +19,17 @@ int main() {
     do {
         try {
     while (true) {
-        cout << "Pasirinkite programos eiga:\n1 - Vedimas ranka.\n2 - Generuoti pazymius.\n3 - Generuoti ir studentu pazymius, ir vardus bei pavardes.\n4 - Baigti darba.\n5 - imti duomenis is failo.\nPasirinkite: ";
+        cout << "Pasirinkite programos eiga:\n1 - Vedimas ranka.\n2 - Generuoti pazymius.\n3 - Generuoti ir studentu pazymius, ir vardus bei pavardes.\n4 - Baigti darba.\n5 - imti duomenis is failo.\n6 - Generuoti faila.\nPasirinkite: ";
         cin >> programos_veikimas;
         if (cin.fail()) {
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
             throw runtime_error("Iveskite skaiciu!");
         }
-        if (programos_veikimas > 0 && programos_veikimas < 6)
+        if (programos_veikimas > 0 && programos_veikimas < 7)
             break;
         else
-            throw runtime_error("Iveskite skaiciu intervale [1, 5]");
+            throw runtime_error("Iveskite skaiciu intervale [1, 6]");
     }
     } catch (const invalid_argument& e) {
         cerr << "Klaida: " << e.what() << endl;
@@ -116,6 +108,14 @@ int main() {
                 cerr << "Klaida: " << e.what() << endl;
                 continue;
             }
+        }
+
+        if(programos_veikimas == 6){
+            int kiekis;
+            int nd_kiekis;
+            cout << "Keliu studentu faila generuoti?: "; cin >> kiekis;
+            cout << "Kiek norite, kad studentas turetu namu darbu?: "; cin >> nd_kiekis;
+            GeneruotiFaila(kiekis, nd_kiekis);
         }
 
         if(programos_veikimas == 3){

@@ -3,6 +3,15 @@
 
 #include <vector>
 #include <string>
+#include <iostream>
+#include <iomanip>
+#include <algorithm>
+#include <limits>
+#include <numeric>
+#include <random>
+#include <ctime>
+#include <fstream>
+#include <chrono>
 
 using namespace std;
 
@@ -23,6 +32,8 @@ extern char choice3;
 
 extern vector<string> Vardai;
 extern vector<string> Pavardes;
+extern vector<Studentokai> Kietiakai;
+extern vector<Studentokai> Vargsiukai;
 
 
 double Vidurkis(int nd_kiekis, int nd_suma, int egzaminas);
@@ -31,5 +42,6 @@ bool palygintiPagalVarda(const Studentokai &a, const Studentokai &b);
 bool palygintiPagalPavarde(const Studentokai &a, const Studentokai &b);
 bool palygintiPagalVidurki(const Studentokai &a, const Studentokai &b);
 bool palygintiPagalMediana(const Studentokai &a, const Studentokai &b);
+void GeneruotiFaila(int kiekis, int nd_kiekis);
 
 #endif
