@@ -13,9 +13,9 @@ Objektinis Programavimas
 
 ## V0.4 <br />
 <center>Failų kūrimas<center/> <br />
-1000.txt =![1000.txt](Foto/image.png) <br />
-10000.txt = ![10000.txt](Foto/image-1.png) <br />
-100000.txt = ![100000.txt](Foto/image-2.png) <br />
-1000000.txt = ![1000000.txt](Foto/image-3.png) <br />
-10000000.txt = ![10000000.txt](Foto/image-4.png) <br />
+1000.txt =![1000.txt](Foto/1000.png) <br />
+10000.txt = ![10000.txt](Foto/10000.png) <br />
+100000.txt = ![100000.txt](Foto/100000.png) <br />
+1000000.txt = ![1000000.txt](Foto/1000000.png) <br />
+10000000.txt = ![10000000.txt](Foto/10000000.png) <br />
 
