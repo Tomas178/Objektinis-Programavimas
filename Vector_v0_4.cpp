@@ -14,6 +14,8 @@ int main() {
     int programos_veikimas;
     int norimas_rikiavimas;
     vector<Studentokai> Studentai;
+    vector<Studentokai> Kieti;
+    vector<Studentokai> Lievi;
     srand(time(nullptr));
 
     do {
@@ -53,9 +55,6 @@ int main() {
         }
 
         if (programos_veikimas == 5) {
-
-            vector<Studentokai> Kieti;
-            vector<Studentokai> Lievi;
             
             try{
             cout << "Cia jusu failai: " << endl;
@@ -88,7 +87,7 @@ int main() {
                     Studentas.namu_darbai.push_back(pazymys);
                     }
                 } catch(const exception &e) {
-                    cerr << "Nepavyko nuskaityti egzamino balo " << Studentai.size() << " eiluteje:(" << endl;
+                    cerr << "Nepavyko nuskaityti namu darbu balo " << Studentai.size() << " eiluteje:(" << endl;
                     exit(1);
                 }
 
@@ -133,6 +132,8 @@ int main() {
                 continue;
             }
 
+            auto start_rusiavimas = chrono::high_resolution_clock::now();
+
             if(noras == 1) {
                 sort(Studentai.begin(), Studentai.end(), palygintiPagalVidurki);
                 for(auto stud : Studentai){
@@ -141,23 +142,44 @@ int main() {
                 }
             }
             else if (noras == 2) {
+                auto start_rusiavimas_visu = chrono::high_resolution_clock::now();
                 sort(Studentai.begin(), Studentai.end(), palygintiPagalMediana);
+                auto end_rusiavimas_visu = chrono::high_resolution_clock::now();
+                auto duration_rusiavimas_visu = chrono::duration_cast<chrono::milliseconds>(end_rusiavimas_visu - start_rusiavimas_visu).count();
+                cout << "Studentu rikiavimas didejimo tvarka uztruko: " << duration_rusiavimas_visu/1000.0 << " sekundes" << endl;
                 for(auto stud : Studentai){
                     if(stud.mediana < 5.0) Lievi.push_back(stud);
                     else Kieti.push_back(stud);
                 }
             }
+            auto end_rusiavimas = chrono::high_resolution_clock::now();
+            auto duration_rusiavimas = chrono::duration_cast<chrono::milliseconds>(end_rusiavimas - start_rusiavimas).count();
+            cout << "I Kietus ir Lievus rusiavimas uztruko: " << duration_rusiavimas/1000.0 << " sekundes" << endl;
+
+            Lievi.shrink_to_fit();
+            Kieti.shrink_to_fit();
 
             cout << "kietu studentu vektoriaus dydis = " << Kieti.size() << endl;
             cout << "Lievu studentu vektoriaus dydis = " << Lievi.size() << endl;
             cout << "kIETU IR LIEVU SUDNETU VEKTORIAUS BENDRAS DYDIS = " << Kieti.size() + Lievi.size() << endl;
 
+            auto start_isvedimas_kietu = chrono::high_resolution_clock::now();
             IsvestiRezultatus("Kieti", Kieti, 2);
+            auto end_isvedimas_kietu = chrono::high_resolution_clock::now();
+            auto duration_isvedimas_kietu = chrono::duration_cast<chrono::milliseconds>(end_isvedimas_kietu - start_isvedimas_kietu).count();
+            cout << "Isvedimas i Kieti.txt faila uztruko: " << duration_isvedimas_kietu/1000.0 << " sekundes" << endl;
+
+            auto start_isvedimas_lievu = chrono::high_resolution_clock::now();
             IsvestiRezultatus("Lievi", Lievi, 2);
+            auto end_isvedimas_lievu = chrono::high_resolution_clock::now();
+            auto duration_isvedimas_lievu = chrono::duration_cast<chrono::milliseconds>(end_isvedimas_lievu - start_isvedimas_lievu).count();
+            cout << "Isvedimas i Lievi.txt faila uztruko: " << duration_isvedimas_lievu/1000.0 << " sekundes" << endl;
+
+            double viso_skaitymo_trukme = (duration_skaitymas + duration_rusiavimas + duration_isvedimas_lievu + duration_isvedimas_kietu)/1000.0;
+            cout << "Visos programos trukme = " << viso_skaitymo_trukme << " sekundes" << endl;
 
             cout << "Vektoriaus capacity: " << Studentai.capacity() << endl;
             cout << "Vektoriaus size: " << Studentai.size() << endl;
-
             
             } catch(const exception& e){
                 cerr << "Klaida: " << e.what() << endl;

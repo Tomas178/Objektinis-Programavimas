@@ -7,7 +7,7 @@ double Vidurkis(int nd_kiekis, int nd_suma, int egzaminas){
         return 0.6*egzaminas;
 }
 
-double medianosSkaiciavimas(const vector<int>& namu_darbai, int nd_kiekis, int egzaminas){
+double medianosSkaiciavimas(const vector<int> &namu_darbai, int nd_kiekis, int egzaminas){
     if(nd_kiekis % 2 == 0 && nd_kiekis > 0)
         return (namu_darbai[nd_kiekis/2-1] + namu_darbai[nd_kiekis/2])/2.0*0.4 + 0.6*egzaminas;
     else if(nd_kiekis % 2 != 0 && nd_kiekis > 0)
@@ -52,6 +52,7 @@ void GeneruotiFaila(int kiekis, int nd_kiekis){
             for(int j = 0; j < nd_kiekis+1; j++){
                 RF << setw(7) << rand()%10+1;
             }
+            if(i != kiekis)
             RF << "\n";
         }
 
@@ -64,7 +65,7 @@ void GeneruotiFaila(int kiekis, int nd_kiekis){
     }  
 }
 
-void IsvestiRezultatus(string pavadinimas, const vector<Studentokai>& Studentai, int norima_isvedimo_vieta) {
+void IsvestiRezultatus(string pavadinimas, const vector<Studentokai> &Studentai, int norima_isvedimo_vieta) {
 
         size_t IlgiausiasVardas = 0;
         size_t IlgiausiaPavarde = 0;

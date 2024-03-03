@@ -12,10 +12,17 @@ Objektinis Programavimas
 ● Vartotojas gali pasirinkti failų skaitymą iš savo turimų failų.
 
 ## V0.4 <br />
-<center>Failų kūrimas<center/> <br />
-1000.txt =![1000.txt](Foto/1000.png) <br />
-10000.txt = ![10000.txt](Foto/10000.png) <br />
-100000.txt = ![100000.txt](Foto/100000.png) <br />
-1000000.txt = ![1000000.txt](Foto/1000000.png) <br />
-10000000.txt = ![10000000.txt](Foto/10000000.png) <br />
+Failų kūrimas <br />
+1000.txt =![1000.txt](Foto/Skaitymas_1000.png) <br />
+10000.txt = ![10000.txt](Foto/Skaitymas_10000.png) <br />
+100000.txt = ![100000.txt](Foto/Skaitymas_100000.png) <br />
+1000000.txt = ![1000000.txt](Foto/Skaitymas_1000000.png) <br />
+10000000.txt = ![10000000.txt](Foto/Skaitymas_10000000.png) <br />
+
+Failų nuskaitymas ir išvedimas į kietus, lievus, bei visus <br />
+1000.txt = ![alt text](Isvedimas_1000.png) <br />
+10000.txt = ![alt text](Isvedimas_10000.png) <br />
+100000.txt = ![alt text](Isvedimas_100000.png) <br />
+1000000.txt = ![alt text](Isvedimas_1000000.png) <br />
+10000000.txt = ![alt text](Isvedimas_10000000.png) <br />
 
