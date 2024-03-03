@@ -20,9 +20,9 @@ Failų kūrimas <br />
 10000000.txt = ![10000000.txt](Foto/Skaitymas_10000000.png) <br />
 
 Failų nuskaitymas ir išvedimas į kietus, lievus, bei visus <br />
-1000.txt = ![alt text](Isvedimas_1000.png) <br />
-10000.txt = ![alt text](Isvedimas_10000.png) <br />
-100000.txt = ![alt text](Isvedimas_100000.png) <br />
-1000000.txt = ![alt text](Isvedimas_1000000.png) <br />
-10000000.txt = ![alt text](Isvedimas_10000000.png) <br />
+1000.txt = ![1000.txt](Foto/Isvedimas_1000.png) <br /> <br />
+10000.txt = ![10000.txt](Foto/Isvedimas_10000.png) <br /> <br />
+100000.txt = ![100000.txt](Foto/Isvedimas_100000.png) <br /> <br />
+1000000.txt = ![1000000.txt](Foto/Isvedimas_1000000.png) <br /> <br />
+10000000.txt = ![10000000.txt](Foto/Isvedimas_10000000.png) <br /> <br />
 
