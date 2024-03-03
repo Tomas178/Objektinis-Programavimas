@@ -7,13 +7,13 @@ Objektinis Programavimas
 `studentai1000000.txt failo skaitymas = 4.479 sekundės`  
 
 ## V0.3  
-- Programą turi tris failus, funkcijos.cpp, funkcijos.h ir Vector_V0_3.cpp.  
-- Yra pridėti try catch blokai.  
-- Vartotojas gali pasirinkti failų skaitymą iš savo turimų failų.  
+- `Programą turi tris failus, funkcijos.cpp, funkcijos.h ir Vector_V0_3.cpp.`  
+- `Yra pridėti try catch blokai.`  
+- `Vartotojas gali pasirinkti failų skaitymą iš savo turimų failų.`  
 
 ## V0.4  
-- Į programą pridėta funkcija generuoti failus pagal norimą studentų kiekį.
-- Į programą pridėta funkcija išskaidyti studentus į kietus ir lievus.
+- `Į programą pridėta funkcija generuoti failus pagal norimą studentų kiekį.`
+- `Į programą pridėta funkcija išskaidyti studentus į kietus ir lievus.`
 
 - Failų kūrimo tyrimas:
     1000.txt = ![1000.txt](Foto/Skaitymas_1000.png)  
