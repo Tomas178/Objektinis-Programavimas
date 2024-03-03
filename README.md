@@ -12,14 +12,17 @@ Objektinis Programavimas
 - Vartotojas gali pasirinkti failų skaitymą iš savo turimų failų.  
 
 ## V0.4  
-- Failų kūrimas  
+- Į programą pridėta funkcija generuoti failus pagal norimą studentų kiekį.
+- Į programą pridėta funkcija išskaidyti studentus į kietus ir lievus.
+
+- Failų kūrimo tyrimas:
     1000.txt = ![1000.txt](Foto/Skaitymas_1000.png)  
     10000.txt = ![10000.txt](Foto/Skaitymas_10000.png)  
     100000.txt = ![100000.txt](Foto/Skaitymas_100000.png)  
     1000000.txt = ![1000000.txt](Foto/Skaitymas_1000000.png)  
     10000000.txt = ![10000000.txt](Foto/Skaitymas_10000000.png)  
 
-- Failų nuskaitymas ir išvedimas į kietus, lievus, bei visus  
+- Failų nuskaitymas ir išvedimas į kietus, lievus, bei visus tyrimas:
     1000.txt = ![1000.txt](Foto/Isvedimas_1000.png)  
 
     10000.txt = ![10000.txt](Foto/Isvedimas_10000.png)  
