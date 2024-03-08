@@ -34,10 +34,11 @@ bool palygintiPagalMediana(const Studentokai &a, const Studentokai &b) {
 
 void GeneruotiFaila(int kiekis, int nd_kiekis){
     string FailoPavadinimas = "Studentai" + to_string(kiekis) + ".txt";
-    ofstream RF(FailoPavadinimas);
+    ofstream FF(FailoPavadinimas);
+    stringstream RF;
     try
     {
-        if (!RF.is_open()) { 
+        if (!RF) { 
             throw runtime_error("Nepavyko atidaryti failo: " + FailoPavadinimas);
         }
 
@@ -55,8 +56,9 @@ void GeneruotiFaila(int kiekis, int nd_kiekis){
             if(i != kiekis)
             RF << "\n";
         }
-
-        RF.close();
+        FF << RF.str();
+        RF.clear();
+        FF.close();
         cout << "Failas: " << FailoPavadinimas << " sugeneruotas sekmingai:)" << endl;
     }
     catch(const exception &e)
